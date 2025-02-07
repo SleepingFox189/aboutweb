@@ -3,153 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cavans Access Help</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Space Themed Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Particles.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
     <style>
-        body {
-            background: linear-gradient(to bottom, #1e3a8a, #000000); /* Deep space gradient */
-            color: #0f0;
-            font-family: monospace;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #1a1a3c, #2d2d6d);
+            color: #fff;
             overflow: hidden;
-            perspective: 800px;
+            position: relative;
         }
 
-        .header {
-            color: #0f0;
-            font-size: 1.5em;
-            margin-bottom: 10px;
-            animation: fadeInDown 1s ease-in-out;
-        }
-
-        .container {
-            width: 80%;
-            max-width: 600px;
-            animation: fadeInUp 1s ease-in-out;
-        }
-
-        .step {
-            margin-bottom: 10px;
-            opacity: 0;
-            animation: fadeIn 1s ease-in-out forwards;
-        }
-
-        .step:nth-child(1) { animation-delay: 0.5s; }
-        .step:nth-child(2) { animation-delay: 1s; }
-        .step:nth-child(3) { animation-delay: 1.5s; }
-
-        .step strong {
-            font-weight: bold;
-        }
-
-        .notice {
-            margin-top: 20px;
-            font-size: 0.9em;
-            animation: zoomIn 1s ease-in-out;
-        }
-
-        .link {
-            color: #0f0;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .link:hover {
-            text-decoration: underline;
-            color: #00ff00;
-        }
-
-        /* Animations (same as before) */
-        @keyframes fadeIn { /* ... */ }
-        @keyframes fadeInDown { /* ... */ }
-        @keyframes fadeInUp { /* ... */ }
-        @keyframes zoomIn { /* ... */ }
-
-
-        /* Rain/Particles */
+        /* Particle background container */
         #particles-js {
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            pointer-events: none;
+            z-index: -1; /* Ensures particles are in the background */
         }
+
+        /* Centered content */
+        .content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .center-text {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+            color: #fff;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff7a7a, #7aa7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 10px 0;
+        }
+
+        p strong {
+            color: #fff;
+        }
+
+        a {
+            color: #7aa7ff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Bold text effect */
+        strong {
+            font-weight: 900;
+            color: #ff7a7a;
+        }
+
     </style>
 </head>
 <body>
+    <!-- Particle container -->
+    <div id="particles-js"></div>
 
-    <div class="header">Cavans Access Help</div>
-
-    <div class="container">
-        <div class="step">Step 1: Pay/Fee 3$ willing to lower for some stuff</div>
-        <div class="step">Step 2: I'll Give You A Key</div>
-        <div class="step">Step 3: Log In With The Key At <a class="link" href="https://login-one-self.vercel.app/index.html" target="_blank">https://login-one-self.vercel.app/index.html</a></div>
-        <div class="notice">Notice: If You Share This Key To Anyone Else I Will Ban You From Using My Website <strong>I Can See Who Uses The Website</strong></div>
+    <div class="content">
+        <div class="center-text">
+            <h1>Cavans Access Help</h1>
+            <p><strong>Step 1:</strong> Pay/Fee 3$ willing to lower for some stuff</p>
+            <p><strong>Step 2:</strong> I'll Give You A Key</p>
+            <p><strong>Step 3:</strong> Log In With The Key At <a href="https://login-one-self.vercel.app/index.html" target="_blank">"https://login-one-self.vercel.app/index.html"</a></p>
+            <p><strong>Notice:</strong> If You Share This Key To Anyone Else I Will Ban You From Using My Website <strong>I Can See Who Uses The Website</strong></p>
+        </div>
     </div>
 
-    <div id="particles-js"></div>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        particlesJS('particles-js', {
+        // Particles.js configuration
+        particlesJS("particles-js", {
             "particles": {
                 "number": {
-                    "value": 80, // Reduced number of particles
+                    "value": 80,
                     "density": {
                         "enable": true,
                         "value_area": 800
                     }
                 },
                 "color": {
-                    "value": "#0f0" // Green particles
+                    "value": "#ffffff"
                 },
                 "shape": {
-                    "type": "circle", // Or "star", "polygon"
+                    "type": "circle",
                     "stroke": {
                         "width": 0,
                         "color": "#000000"
                     },
                     "polygon": {
                         "nb_sides": 5
+                    },
+                    "image": {
+                        "src": "img/github.svg",
+                        "width": 100,
+                        "height": 100
                     }
                 },
                 "opacity": {
-                    "value": 0.8, // Slightly more transparent
+                    "value": 0.5,
                     "random": true,
                     "anim": {
                         "enable": true,
-                        "speed": 0.5, // Slower opacity animation
-                        "opacity_min": 0,
+                        "speed": 1,
+                        "opacity_min": 0.1,
                         "sync": false
                     }
                 },
                 "size": {
-                    "value": 2, // Smaller particles
+                    "value": 5,
                     "random": true,
                     "anim": {
                         "enable": false,
-                        "speed": 4,
-                        "size_min": 0.3,
+                        "speed": 40,
+                        "size_min": 0.1,
                         "sync": false
                     }
                 },
                 "line_linked": {
                     "enable": true,
-                    "distance": 100, // Shorter lines
-                    "color": "#0f0",
-                    "opacity": 0.4, // More transparent lines
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
                     "width": 1
                 },
                 "move": {
                     "enable": true,
-                    "speed": 3,  // Slower movement
-                    "direction": "bottom", // Rain-like direction
-                    "random": false, // No random movement
-                    "straight": true, // Straight lines
+                    "speed": 6,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
                     "out_mode": "out",
+                    "bounce": false,
                     "attract": {
                         "enable": false,
                         "rotateX": 600,
@@ -157,14 +184,22 @@
                     }
                 }
             },
-            "interactivity": { // You can keep interactivity or remove it
+            "interactivity": {
                 "detect_on": "canvas",
-                "events": { /* ... */ }
-                "modes": { /* ... */ }
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                }
             },
             "retina_detect": true
         });
     </script>
-
 </body>
 </html>

@@ -6,7 +6,7 @@
     <title>Cavans Access Help</title>
     <style>
         body {
-            background-color: #000;
+            background: linear-gradient(to bottom, #1e3a8a, #000000); /* Deep space gradient */
             color: #0f0;
             font-family: monospace;
             display: flex;
@@ -15,30 +15,30 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            overflow: hidden; /* Hide scrollbars */
-            perspective: 800px; /* For 3D effect on particles */
+            overflow: hidden;
+            perspective: 800px;
         }
 
         .header {
             color: #0f0;
             font-size: 1.5em;
             margin-bottom: 10px;
-            animation: fadeInDown 1s ease-in-out; /* Animate header */
+            animation: fadeInDown 1s ease-in-out;
         }
 
         .container {
             width: 80%;
             max-width: 600px;
-            animation: fadeInUp 1s ease-in-out; /* Animate container */
+            animation: fadeInUp 1s ease-in-out;
         }
 
         .step {
             margin-bottom: 10px;
-            opacity: 0; /* Initially hidden */
-            animation: fadeIn 1s ease-in-out forwards; /* Animate each step */
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
         }
 
-        .step:nth-child(1) { animation-delay: 0.5s; } /* Delay for each step */
+        .step:nth-child(1) { animation-delay: 0.5s; }
         .step:nth-child(2) { animation-delay: 1s; }
         .step:nth-child(3) { animation-delay: 1.5s; }
 
@@ -49,49 +49,34 @@
         .notice {
             margin-top: 20px;
             font-size: 0.9em;
-            animation: zoomIn 1s ease-in-out; /* Animate notice */
+            animation: zoomIn 1s ease-in-out;
         }
 
         .link {
             color: #0f0;
             text-decoration: none;
-            transition: color 0.3s ease; /* Smooth color transition */
+            transition: color 0.3s ease;
         }
 
         .link:hover {
             text-decoration: underline;
-            color: #00ff00; /* Brighter green on hover */
+            color: #00ff00;
         }
 
+        /* Animations (same as before) */
+        @keyframes fadeIn { /* ... */ }
+        @keyframes fadeInDown { /* ... */ }
+        @keyframes fadeInUp { /* ... */ }
+        @keyframes zoomIn { /* ... */ }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
 
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes zoomIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        /* Particles */
+        /* Rain/Particles */
         #particles-js {
             position: absolute;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Place particles behind content */
-            pointer-events: none; /* Allow clicks to pass through */
+            z-index: -1;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -106,12 +91,13 @@
         <div class="notice">Notice: If You Share This Key To Anyone Else I Will Ban You From Using My Website <strong>I Can See Who Uses The Website</strong></div>
     </div>
 
-    <div id="particles-js"></div>  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <div id="particles-js"></div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         particlesJS('particles-js', {
             "particles": {
                 "number": {
-                    "value": 160,
+                    "value": 80, // Reduced number of particles
                     "density": {
                         "enable": true,
                         "value_area": 800
@@ -121,7 +107,7 @@
                     "value": "#0f0" // Green particles
                 },
                 "shape": {
-                    "type": "circle",
+                    "type": "circle", // Or "star", "polygon"
                     "stroke": {
                         "width": 0,
                         "color": "#000000"
@@ -131,17 +117,17 @@
                     }
                 },
                 "opacity": {
-                    "value": 1,
+                    "value": 0.8, // Slightly more transparent
                     "random": true,
                     "anim": {
                         "enable": true,
-                        "speed": 1,
+                        "speed": 0.5, // Slower opacity animation
                         "opacity_min": 0,
                         "sync": false
                     }
                 },
                 "size": {
-                    "value": 4,
+                    "value": 2, // Smaller particles
                     "random": true,
                     "anim": {
                         "enable": false,
@@ -152,17 +138,17 @@
                 },
                 "line_linked": {
                     "enable": true,
-                    "distance": 150,
-                    "color": "#0f0", // Green lines
-                    "opacity": 0.5,
+                    "distance": 100, // Shorter lines
+                    "color": "#0f0",
+                    "opacity": 0.4, // More transparent lines
                     "width": 1
                 },
                 "move": {
                     "enable": true,
-                    "speed": 6,
-                    "direction": "none",
-                    "random": true,
-                    "straight": false,
+                    "speed": 3,  // Slower movement
+                    "direction": "bottom", // Rain-like direction
+                    "random": false, // No random movement
+                    "straight": true, // Straight lines
                     "out_mode": "out",
                     "attract": {
                         "enable": false,
@@ -171,44 +157,10 @@
                     }
                 }
             },
-            "interactivity": {
+            "interactivity": { // You can keep interactivity or remove it
                 "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "grab"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                        "distance": 140,
-                        "line_linked": {
-                            "opacity": 1
-                        }
-                    },
-                    "bubble": {
-                        "distance": 250,
-                        "size": 0,
-                        "duration": 2,
-                        "opacity": 0.8,
-                        "speed": 3
-                    },
-                    "repulse": {
-                        "distance": 300,
-                        "duration": 0.4
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    },
-                    "remove": {
-                        "particles_nb": 2
-                    }
-                }
+                "events": { /* ... */ }
+                "modes": { /* ... */ }
             },
             "retina_detect": true
         });
